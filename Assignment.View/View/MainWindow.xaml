@@ -1,0 +1,109 @@
+﻿<Window x:Class="Assignment.View.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Assignment.View.View"
+        xmlns:viewModel="clr-namespace:Assignment.View.ViewModel" xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <DataGrid Name="g1" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Binding="{Binding Username}" Header="Id" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Lastname}" Header="Id" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Gender}" Header="Id" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Dob}" Header="Id" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Email}" Header="Id" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Id" Width="100"/>
+
+
+
+            </DataGrid.Columns>
+            
+        </DataGrid>
+        <TextBlock Text="{Binding CurrentUserAccount.DisplayName}"
+                   FontSize="25"
+                   Foreground="red"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
+        <Border CornerRadius="10"
+        Background="DarkSlateBlue"
+        BorderThickness="2"
+                Opacity="0.90">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="LightCyan" Offset="0"/>
+                    <GradientStop Color="DeepPink" Offset="0.75"/>
+                    <GradientStop Color="DeepSkyBlue" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+            <Grid>
+                <TextBlock Text="{Binding CurrentUserAccount.DisplayName}"
+                   FontSize="30"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
+
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <!--Navigation Menu-->
+                        <ColumnDefinition Width="250"/>
+                        <!--Content Section-->
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Navigation Menu-->
+                    <Border CornerRadius="10,0,0,10" Grid.Column="0">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.7">
+                                <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
+                                <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <StackPanel>
+                            <!-- Menu Buttons-->
+                            <RadioButton Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color1}">
+
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconImage Icon="Home" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="Dashboard" Style="{StaticResource menuButtonText}"/>
+                                </StackPanel>
+                            </RadioButton>
+
+                            <RadioButton Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color2}">
+
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:IconImage Icon="UserGroup" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="Registered User" Style="{StaticResource menuButtonText}"/>
+                                </StackPanel>
+                            </RadioButton>
+
+                        </StackPanel>
+
+                    </Border>
+
+                    <!--Main Section-->
+
+                    <Border CornerRadius="0,10,10,0" Grid.Column="1">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
+                                <GradientStop Color="{StaticResource primaryBackColor1}" Offset="0"/>
+                                <GradientStop Color="{StaticResource primaryBackColor2}" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
